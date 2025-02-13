@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  # app
+  app-calculator:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../src:/var/www/html
+      - ./configs/laravel/.env:/var/www/html/.env
+      - app-calculator-vendor:/var/www/html/vendor
+    ports:
+      - 82:80
+
+volumes:
+  app-calculator-vendor:
