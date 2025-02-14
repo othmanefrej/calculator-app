@@ -23,7 +23,7 @@ This project is a simple web-based calculator built using Laravel, Docker, and M
 - restart the services : `make restart`
 - execute shell commands inside the app container : `make sh`
 - execute laravel tests : `make test`
-- copy laravel vendor to ./src/vendor : `make cp-vendor`
+- run unit tests : `make test-unit`
 
 ## Laravel env Setup
 
