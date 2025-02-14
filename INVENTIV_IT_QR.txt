@@ -1,0 +1,61 @@
+1) Quel est le rôle des files d'attente et du traitement en arrière-plan dans Laravel ?
+Les files d'attente permettent d'exécuter des tâches en arrière-plan sans ralentir l'application. Par exemple, envoyer un e-mail sans attendre que l'utilisateur voie la page se recharger.
+
+2) Comment configurer et gérer les files d'attente ?
+1. Choisir le type driver de file dans .env (Redis, base de données...)
+2. Créer un job avec php artisan make:job [NameJob]
+3. Écrire la logique du job dans handle()
+4. Lancer le job avec [NameJob]::dispatch($data)
+5. Démarrer le worker avec php artisan queue:work
+
+3) Pourquoi utiliser les files d’attente au lieu du traitement direct ?
+- L'application reste rapide
+- Évite de bloquer l'utilisateur
+
+4) Comment fonctionne un job dans Laravel ?
+1. Un job est ajouté dans la file
+2. Un worker récupère le job et l'exécute
+3. Si tout va bien, le job est supprimé
+4. S’il échoue, Laravel peut le réessayer ou le mettre en file d'échec
+
+5) Comment récupérer une grande quantité de données avec Eloquent ?
+Avec chunk() pour éviter de charger toute la base en mémoire 
+
+
+6) Parlez-moi du projet le plus important sur lequel vous avez travaillé. Quelle
+était votre responsabilité et quelle a été la grande part que vous avez
+accomplie ?
+
+Description du Projet : Mini Hannout – Gestion d’Outils
+Contexte et Métier du Projet
+
+Le projet Mini Hannout est une application de gestion des outils utilisée dans un environnement industriel. Son objectif principal est de suivre les entrées et sorties des outils, assurer leur traçabilité et garantir leur conformité. Cette solution permet aux différents services (métrologie, planification, achats) d’avoir une visibilité en temps réel sur l’état des outils et d’optimiser leur gestion.
+Fonctionnalités Principales
+
+- Gestion des outils : Suivi des entrées et sorties des outils pour assurer leur traçabilité.
+- Conformité des outils : Classification des outils en conformes, non conformes ou presque non conformes. Les outils nécessitant une vérification sont automatiquement envoyés au service métrologie.
+- Intégration avec Sage X3 et Odoo : L’application consomme des API externes pour synchroniser les données avec ces systèmes ERP.
+- Tableau de bord interactif : Vue d’ensemble des outils disponibles, des outils utilisés, des non conformes en circulation, etc.
+- Gestion des armoires et des projets : Chaque armoire est liée à un projet spécifique de câblage, permettant une organisation efficace.
+- Lecture QR Code : Ajout d’un module de scan QR Code pour identifier rapidement les outils sans saisie manuelle, réduisant ainsi les erreurs et le temps de traitement.
+- Envoi automatique d’e-mails : Notifications aux services concernés (métrologie, planification, achats) pour informer des actions à prendre sur les outils.
+- Génération de rapports PDF : Utilisation de Dompdf pour générer des rapports sur l’état des outils et les statistiques d’utilisation.
+
+Technologies Utilisées
+
+- Backend : Laravel (PHP)
+- Base de données : MySQL
+- Frontend : Blade (Vue simplifiée avec Bootstrap)
+- Intégration API : Sage X3, Odoo
+- Génération de documents : Dompdf
+- QR Code Scanner : Module de lecture pour optimiser la saisie
+Expérience et Apprentissage
+
+Ce projet a été très important pour moi car c’était mon premier projet en entreprise. J’ai appris à travailler sur une application complète, à gérer des API externes, et à structurer un projet du développement à la mise en production. J’ai aussi découvert l’importance de l’optimisation des processus métier et de l’expérience utilisateur.
+
+Pour garantir la fiabilité de l’application, j’ai mis en place des tests unitaires avec PHPUnit afin de vérifier les fonctionnalités essentielles
+
+Ce projet a été une expérience enrichissante, qui m’a permis de progresser en développement Laravel, en intégration de services externes, et en optimisation des processus métiers.
+
+7) Est-ce que tu fais des tests automatisés ?
+Oui, je travaille avec l'automatisation des tests, principalement avec PHPUnit pour les tests unitaires. Cela permet de vérifier que chaque partie du code fonctionne correctement de manière isolée.
