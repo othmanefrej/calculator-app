@@ -1,4 +1,4 @@
-service_name=app-test
+service_name=app-calculator
 
 # build
 build:
@@ -21,8 +21,4 @@ sh:
 
 # test the $(service_name)
 test:
-	docker compose -f docker/docker-compose.yml exec -T $(service_name) sh -c 'php artisan test --env .env.testing'
-
-# copy vendor
-cp-vendor:
-	docker compose -f docker/docker-compose.yml cp $(service_name):/var/www/html/vendor src
+	docker compose -f docker/docker-compose.yml exec -T $(service_name) sh -c 'php artisan test'
